@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-import 'TextFieldAlertDialog.dart';
+import 'ChangeNameAlertDialog.dart';
 
 class GreeterWidget extends StatefulWidget {
   const GreeterWidget({Key? key}) : super(key: key);
@@ -10,7 +11,23 @@ class GreeterWidget extends StatefulWidget {
 }
 
 class _GreeterWidgetState extends State<GreeterWidget> {
-  var nome = "Cainã Contarin";
+  var nome = "";
+
+  Future<String> _getNameFromSharedPref() async {
+    final prefs = await SharedPreferences.getInstance();
+    final startupName = prefs.getString("prefName");
+    if (startupName == null) {
+      return "Seu Nome";
+    }
+    return startupName;
+  }
+
+  Future<void> _setNameFromSharedPref(String nome) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString("prefName", nome);
+  }
+
+  Future<void> _startupName() async => _setName(await _getNameFromSharedPref());
 
   final now = DateTime.now();
 
@@ -26,9 +43,16 @@ class _GreeterWidgetState extends State<GreeterWidget> {
     return result;
   }
 
+  @override
+  void initState() {
+    super.initState();
+    _startupName();
+  }
+
   void _setName(String newName) {
     setState(() {
       nome = newName;
+      _setNameFromSharedPref(nome);
     });
   }
 
@@ -47,12 +71,12 @@ class _GreeterWidgetState extends State<GreeterWidget> {
           onTap: () {
             showDialog(
               context: context,
-              builder: (_) => TextFieldAlertDialog(nome, _setName),
+              builder: (_) => ChangeNameAlertDialog(nome, _setName),
             );
           },
           child: Text(
             nome,
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: 22,
               fontWeight: FontWeight.bold,
             ),

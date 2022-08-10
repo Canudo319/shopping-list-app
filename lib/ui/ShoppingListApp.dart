@@ -11,6 +11,9 @@ class ShoppingListApp extends StatelessWidget {
         appBar: AppBar(
           title: const GreeterWidget(),
         ),
+        body: const Center(
+          child: Text("Adicionar uma nova compra"),
+        ),
       ),
     );
   }

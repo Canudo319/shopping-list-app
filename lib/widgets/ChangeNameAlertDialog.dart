@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-class TextFieldAlertDialog extends StatelessWidget {
+class ChangeNameAlertDialog extends StatelessWidget {
   final String nome;
   final void Function(String) setName;
 
-  const TextFieldAlertDialog(this.nome, this.setName, {Key? key})
+  const ChangeNameAlertDialog(this.nome, this.setName, {Key? key})
       : super(key: key);
 
   @override
