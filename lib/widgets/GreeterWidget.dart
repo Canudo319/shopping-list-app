@@ -1,13 +1,19 @@
 import 'package:flutter/material.dart';
 
-import 'TextFildAlertDialog.dart';
+import 'TextFieldAlertDialog.dart';
 
-class GreeterWidget extends StatelessWidget {
-  GreeterWidget({Key? key}) : super(key: key);
+class GreeterWidget extends StatefulWidget {
+  const GreeterWidget({Key? key}) : super(key: key);
 
+  @override
+  State<GreeterWidget> createState() => _GreeterWidgetState();
+}
+
+class _GreeterWidgetState extends State<GreeterWidget> {
   var nome = "Cainã Contarin";
 
   final now = DateTime.now();
+
   String get greeting {
     String result;
     if (now.hour >= 4 && now.hour < 11) {
@@ -18,6 +24,12 @@ class GreeterWidget extends StatelessWidget {
       result = "Boa Noite!";
     }
     return result;
+  }
+
+  void _setName(String newName) {
+    setState(() {
+      nome = newName;
+    });
   }
 
   @override
@@ -35,7 +47,7 @@ class GreeterWidget extends StatelessWidget {
           onTap: () {
             showDialog(
               context: context,
-              builder: (_) => TextFildAlertDialog(nome),
+              builder: (_) => TextFieldAlertDialog(nome, _setName),
             );
           },
           child: Text(

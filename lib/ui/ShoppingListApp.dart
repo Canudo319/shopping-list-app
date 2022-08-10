@@ -9,7 +9,7 @@ class ShoppingListApp extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: GreeterWidget(),
+          title: const GreeterWidget(),
         ),
       ),
     );

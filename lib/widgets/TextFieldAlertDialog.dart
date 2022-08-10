@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
 
-class TextFildAlertDialog extends StatelessWidget {
+class TextFieldAlertDialog extends StatelessWidget {
   final String nome;
+  final void Function(String) setName;
 
-  const TextFildAlertDialog(this.nome, {Key? key}) : super(key: key);
+  const TextFieldAlertDialog(this.nome, this.setName, {Key? key})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    var newNome = nome;
+
     return AlertDialog(
       title: const Text("Mudar Nome?"),
       content: TextFormField(
@@ -14,14 +18,22 @@ class TextFildAlertDialog extends StatelessWidget {
         style: const TextStyle(
           fontSize: 20,
         ),
+        onChanged: (String s) {
+          newNome = s;
+        },
       ),
       actions: [
         TextButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.pop(context);
+          },
           child: const Text("Não"),
         ),
         TextButton(
-          onPressed: () {},
+          onPressed: () {
+            setName(newNome);
+            Navigator.pop(context);
+          },
           child: const Text("Sim"),
         ),
       ],
