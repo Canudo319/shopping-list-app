@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:shopping_list_app/widgets/TextGreeter.dart';
 
 import 'ChangeNameAlertDialog.dart';
 
@@ -29,20 +30,6 @@ class _GreeterWidgetState extends State<GreeterWidget> {
 
   Future<void> _startupName() async => _setName(await _getNameFromSharedPref());
 
-  final now = DateTime.now();
-
-  String get greeting {
-    String result;
-    if (now.hour >= 4 && now.hour < 11) {
-      result = "Bom Dia!";
-    } else if (now.hour >= 11 && now.hour < 17) {
-      result = "Boa Tarde!";
-    } else {
-      result = "Boa Noite!";
-    }
-    return result;
-  }
-
   @override
   void initState() {
     super.initState();
@@ -61,12 +48,7 @@ class _GreeterWidgetState extends State<GreeterWidget> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          greeting,
-          style: const TextStyle(
-            fontSize: 12,
-          ),
-        ),
+        TextGreeter(),
         InkWell(
           onTap: () {
             showDialog(

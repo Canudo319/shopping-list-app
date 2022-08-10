@@ -10,6 +10,15 @@ class ShoppingListApp extends StatelessWidget {
       home: Scaffold(
         appBar: AppBar(
           title: const GreeterWidget(),
+          actions: [
+            ElevatedButton(
+              onPressed: () {},
+              child: const Icon(
+                Icons.format_paint,
+                color: Colors.white,
+              ),
+            )
+          ],
         ),
         body: const Center(
           child: Text("Adicionar uma nova compra"),
