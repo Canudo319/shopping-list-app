@@ -7,7 +7,9 @@ import '../widgets/shopping_item_list_tile.dart';
 import 'item_inspection.dart';
 
 class HomeApp extends StatelessWidget {
-  const HomeApp({Key? key}) : super(key: key);
+  final void Function(ThemeData) _setThemeData;
+
+  const HomeApp(this._setThemeData, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +49,8 @@ class HomeApp extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute<void>(
-                  builder: (BuildContext context) => const ChangePrimaryColor(),
+                  builder: (BuildContext context) =>
+                      ChangePrimaryColor(_setThemeData),
                 ),
               );
             },

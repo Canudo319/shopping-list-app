@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 
 class ChangePrimaryColor extends StatelessWidget {
-  const ChangePrimaryColor({Key? key}) : super(key: key);
+  final void Function(ThemeData) _setThemeData;
 
-  List<ElevatedButton> _getAllColors() {
+  const ChangePrimaryColor(this._setThemeData, {Key? key}) : super(key: key);
+
+  List<ElevatedButton> _getAllColors(BuildContext context) {
     const colors = [
       Colors.blue,
       Colors.cyan,
@@ -26,7 +28,12 @@ class ChangePrimaryColor extends StatelessWidget {
           style: ElevatedButton.styleFrom(
             primary: color,
           ),
-          onPressed: () {},
+          onPressed: () {
+            _setThemeData(ThemeData(
+              primaryColor: color,
+            ));
+            Navigator.pop(context);
+          },
           child: const Text(""),
         ),
       );
@@ -40,10 +47,11 @@ class ChangePrimaryColor extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Mudar Cor?"),
+        backgroundColor: Theme.of(context).primaryColor,
       ),
       body: GridView.count(
         crossAxisCount: 3,
-        children: [..._getAllColors()],
+        children: [..._getAllColors(context)],
       ),
     );
   }
