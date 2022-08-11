@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shopping_list_app/ui/change_primary_color.dart';
 
 import '../models/shopping_item_model.dart';
 import '../widgets/greeter_widget.dart';
@@ -42,7 +43,14 @@ class HomeApp extends StatelessWidget {
         title: const GreeterWidget(),
         actions: [
           RawMaterialButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute<void>(
+                  builder: (BuildContext context) => const ChangePrimaryColor(),
+                ),
+              );
+            },
             shape: const CircleBorder(),
             child: const Icon(
               Icons.format_paint,
