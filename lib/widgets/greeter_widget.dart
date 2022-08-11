@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:shopping_list_app/widgets/TextGreeter.dart';
+import 'package:shopping_list_app/widgets/text_greeter.dart';
 
-import 'ChangeNameAlertDialog.dart';
+import 'change_name_alert_dialog.dart';
 
 class GreeterWidget extends StatefulWidget {
   const GreeterWidget({Key? key}) : super(key: key);

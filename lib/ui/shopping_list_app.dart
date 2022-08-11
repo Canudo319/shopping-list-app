@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shopping_list_app/widgets/GreeterWidget.dart';
+import 'package:shopping_list_app/widgets/greeter_widget.dart';
 
 class ShoppingListApp extends StatelessWidget {
   const ShoppingListApp({Key? key}) : super(key: key);
@@ -11,8 +11,9 @@ class ShoppingListApp extends StatelessWidget {
         appBar: AppBar(
           title: const GreeterWidget(),
           actions: [
-            ElevatedButton(
+            RawMaterialButton(
               onPressed: () {},
+              shape: const CircleBorder(),
               child: const Icon(
                 Icons.format_paint,
                 color: Colors.white,
