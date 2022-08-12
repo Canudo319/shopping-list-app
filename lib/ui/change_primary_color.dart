@@ -7,18 +7,18 @@ class ChangePrimaryColor extends StatelessWidget {
 
   List<ElevatedButton> _getAllColors(BuildContext context) {
     const colors = [
+      Colors.indigoAccent,
       Colors.blue,
       Colors.cyan,
-      Colors.orange,
-      Colors.grey,
-      Colors.black,
-      Colors.white,
-      Colors.red,
-      Colors.purple,
-      Colors.indigoAccent,
       Colors.green,
       Colors.lightGreen,
       Colors.greenAccent,
+      Colors.red,
+      Colors.pink,
+      Colors.purple,
+      Colors.orange,
+      Colors.brown,
+      Colors.grey,
     ];
 
     List<ElevatedButton> buttons = [];
@@ -50,7 +50,10 @@ class ChangePrimaryColor extends StatelessWidget {
         backgroundColor: Theme.of(context).primaryColor,
       ),
       body: GridView.count(
+        padding: const EdgeInsets.fromLTRB(10, 20, 10, 5),
         crossAxisCount: 3,
+        mainAxisSpacing: 5,
+        crossAxisSpacing: 5,
         children: [..._getAllColors(context)],
       ),
     );
