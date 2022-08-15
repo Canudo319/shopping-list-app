@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shopping_list_app/models/shopping_cart_model.dart';
+import 'package:shopping_list_app/ui/cart_inspection_menu/view/cart_inspection.dart';
 
 class ShoppingCartListTile extends StatelessWidget {
   final ShoppingCartModel cart;
@@ -11,7 +12,14 @@ class ShoppingCartListTile extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.fromLTRB(0, 4, 0, 4),
       child: ListTile(
-        onTap: () {},
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute<void>(
+              builder: (BuildContext context) => CartInspection(cart),
+            ),
+          );
+        },
         leading: const Icon(
           Icons.shopping_cart,
           color: Colors.white,

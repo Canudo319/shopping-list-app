@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../models/shopping_item_model.dart';
-import '../ui/item_inspection.dart';
+import '../../../models/shopping_item_model.dart';
+import '../../item_inspection.dart';
 
 class ShoppingItemListTile extends StatelessWidget {
   final ShoppingItemModel item;
