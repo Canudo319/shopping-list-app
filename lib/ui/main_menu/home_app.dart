@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:shopping_list_app/ui/home_app.dart';
+import 'package:shopping_list_app/ui/main_menu/view/shopping_carts_menu.dart';
 
-class ShoppingListApp extends StatefulWidget {
-  const ShoppingListApp({Key? key}) : super(key: key);
+class HomeApp extends StatefulWidget {
+  const HomeApp({Key? key}) : super(key: key);
 
   @override
-  State<ShoppingListApp> createState() => _ShoppingListAppState();
+  State<HomeApp> createState() => _HomeAppState();
 }
 
-class _ShoppingListAppState extends State<ShoppingListApp> {
+class _HomeAppState extends State<HomeApp> {
   var themeApp = ThemeData(
     primaryColor: Colors.blue,
   );
@@ -24,7 +24,7 @@ class _ShoppingListAppState extends State<ShoppingListApp> {
     return MaterialApp(
       title: "Shopping App",
       theme: themeApp,
-      home: HomeApp(_setThemeData),
+      home: ShoppingCartsMenu(_setThemeData),
     );
   }
 }

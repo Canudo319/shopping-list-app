@@ -7,9 +7,9 @@ class TextGreeter extends StatelessWidget {
 
   String get greeting {
     String result;
-    if (now.hour >= 4 && now.hour < 11) {
+    if (now.hour >= 6 && now.hour < 12) {
       result = "Bom Dia!";
-    } else if (now.hour >= 11 && now.hour < 17) {
+    } else if (now.hour >= 12 && now.hour < 18) {
       result = "Boa Tarde!";
     } else {
       result = "Boa Noite!";

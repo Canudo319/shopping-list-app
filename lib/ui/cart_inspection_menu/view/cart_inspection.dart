@@ -11,8 +11,6 @@ class CartInspection extends StatefulWidget {
 }
 
 class _CartInspectionState extends State<CartInspection> {
-  void _setCartName(String cartName) {}
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(

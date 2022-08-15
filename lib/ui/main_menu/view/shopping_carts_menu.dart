@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:shopping_list_app/models/shopping_cart_model.dart';
-import 'package:shopping_list_app/ui/change_primary_color.dart';
-import 'package:shopping_list_app/widgets/shopping_cart_list_tile.dart';
+import 'package:shopping_list_app/ui/change_primary_color_menu/view/change_primary_color.dart';
 
-import '../models/shopping_item_model.dart';
+import '../../../models/shopping_item_model.dart';
 import '../widgets/greeter_widget.dart';
+import '../widgets/shopping_cart_list_tile.dart';
 
-class HomeApp extends StatelessWidget {
+class ShoppingCartsMenu extends StatelessWidget {
   final void Function(ThemeData) _setThemeData;
 
-  const HomeApp(this._setThemeData, {Key? key}) : super(key: key);
+  const ShoppingCartsMenu(this._setThemeData, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
