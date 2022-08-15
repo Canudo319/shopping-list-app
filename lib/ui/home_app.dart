@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:shopping_list_app/models/shopping_cart_model.dart';
 import 'package:shopping_list_app/ui/change_primary_color.dart';
+import 'package:shopping_list_app/widgets/shopping_cart_list_tile.dart';
 
 import '../models/shopping_item_model.dart';
 import '../widgets/greeter_widget.dart';
-import '../widgets/shopping_item_list_tile.dart';
-import 'item_inspection.dart';
 
 class HomeApp extends StatelessWidget {
   final void Function(ThemeData) _setThemeData;
@@ -13,30 +13,57 @@ class HomeApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<ShoppingItemListTile> _extract(List<ShoppingItemModel> listaItens) {
-      List<ShoppingItemListTile> listTiles = [];
+    List<ShoppingCartListTile> _extract(List<ShoppingCartModel> listaCarts) {
+      List<ShoppingCartListTile> listTiles = [];
 
-      for (var item in listaItens) {
-        listTiles.add(ShoppingItemListTile(item));
+      for (var cart in listaCarts) {
+        listTiles.add(ShoppingCartListTile(cart));
       }
 
       return listTiles;
     }
 
-    var itens = [
-      ShoppingItemModel(
+    var shoppingCarts = [
+      ShoppingCartModel(
         id: 1,
-        name: "Bolacha",
-        price: 3.99,
-        brand: "Trakinas",
+        date: DateTime(2022, 08, 14),
+        name: "Carrinho 1",
+        itens: [
+          ShoppingItemModel(
+            id: 1,
+            name: "Bolacha",
+            price: 3.99,
+            brand: "Trakinas",
+          ),
+          ShoppingItemModel(
+            id: 2,
+            name: "Multiuso",
+            price: 7.99,
+            brand: "Omo",
+            type: "Limpeza",
+          ),
+        ],
       ),
-      ShoppingItemModel(
-        id: 2,
-        name: "Multiuso",
-        price: 7.99,
-        brand: "Omo",
-        type: "Limpeza",
-      ),
+      ShoppingCartModel(
+        id: 1,
+        date: DateTime(2022, 08, 14),
+        name: "Carrinho 2",
+        itens: [
+          ShoppingItemModel(
+            id: 1,
+            name: "Bolacha",
+            price: 3.99,
+            brand: "Trakinas",
+          ),
+          ShoppingItemModel(
+            id: 2,
+            name: "Multiuso",
+            price: 7.99,
+            brand: "Omo",
+            type: "Limpeza",
+          ),
+        ],
+      )
     ];
 
     return Scaffold(
@@ -64,7 +91,7 @@ class HomeApp extends StatelessWidget {
       ),
       body: ListView(
         padding: const EdgeInsets.all(10),
-        children: [..._extract(itens)],
+        children: [..._extract(shoppingCarts)],
       ),
     );
   }

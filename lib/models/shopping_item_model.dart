@@ -5,10 +5,11 @@ class ShoppingItemModel {
   String? type;
   double price;
 
-  ShoppingItemModel(
-      {required this.id,
-      required this.name,
-      this.brand,
-      this.type,
-      required this.price});
+  ShoppingItemModel({
+    required this.id,
+    required this.name,
+    this.brand,
+    this.type,
+    required this.price,
+  });
 }
