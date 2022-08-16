@@ -15,6 +15,10 @@ class ShoppingCartModel {
     this.itens,
   });
 
+  void setName(String name) {
+    this.name = name;
+  }
+
   String getFormatedDate() {
     return DateFormat("dd/MM/yyyy - kk:mm").format(date);
   }
