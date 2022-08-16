@@ -63,7 +63,7 @@ class ShoppingCartsMenu extends StatelessWidget {
             type: "Limpeza",
           ),
         ],
-      )
+      ),
     ];
 
     return Scaffold(
@@ -89,9 +89,24 @@ class ShoppingCartsMenu extends StatelessWidget {
           )
         ],
       ),
-      body: ListView(
+      body: Container(
         padding: const EdgeInsets.all(10),
-        children: [..._extract(shoppingCarts)],
+        child: Column(
+          children: [
+            Expanded(
+              child: Card(
+                elevation: 0,
+                child: ListView(
+                  children: [..._extract(shoppingCarts)],
+                ),
+              ),
+            ),
+            ElevatedButton(
+              onPressed: () {},
+              child: const Text("data"),
+            )
+          ],
+        ),
       ),
     );
   }

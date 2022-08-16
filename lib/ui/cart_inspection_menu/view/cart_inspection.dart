@@ -51,9 +51,18 @@ class _CartInspectionState extends State<CartInspection> {
           ],
         ),
       ),
-      body: ListView(
-        padding: const EdgeInsets.all(10),
-        children: [..._extract(widget.cart.itens ?? [])],
+      body: Column(
+        children: [
+          Expanded(
+            child: Card(
+              elevation: 0,
+              child: ListView(
+                padding: const EdgeInsets.all(10),
+                children: [..._extract(widget.cart.itens)],
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

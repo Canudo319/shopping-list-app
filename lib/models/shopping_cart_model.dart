@@ -6,17 +6,21 @@ class ShoppingCartModel {
   final int id;
   String name;
   DateTime date;
-  List<ShoppingItemModel>? itens;
+  List<ShoppingItemModel> itens;
 
   ShoppingCartModel({
     required this.id,
     required this.name,
     required this.date,
-    this.itens,
+    required this.itens,
   });
 
-  void setName(String name) {
-    this.name = name;
+  double getTotalCart() {
+    double total = 0.0;
+    for (var shoppingItem in itens) {
+      total = total + shoppingItem.price;
+    }
+    return total;
   }
 
   String getFormatedDate() {

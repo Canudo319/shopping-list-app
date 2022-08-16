@@ -17,7 +17,7 @@ class _ShoppingCartListTileState extends State<ShoppingCartListTile> {
   Widget build(BuildContext context) {
     void _setCartName(String newName) {
       setState(() {
-        widget.cart.setName(newName);
+        widget.cart.name = newName;
       });
     }
 
@@ -33,6 +33,7 @@ class _ShoppingCartListTileState extends State<ShoppingCartListTile> {
         newScreen: CartInspection(widget.cart, _setCartName),
         title: widget.cart.name,
         subtitle: widget.cart.getFormatedDate(),
+        trailing: "Total R\$ ${widget.cart.getTotalCart()}",
         icone: icone,
       ),
     );
