@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:shopping_list_app/widgets/text_button_setname.dart';
 
-import '../../../widgets/change_name_alert_dialog.dart';
 import 'text_greeter.dart';
 
 class GreeterWidget extends StatefulWidget {
@@ -49,21 +49,10 @@ class _GreeterWidgetState extends State<GreeterWidget> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         TextGreeter(),
-        InkWell(
-          onTap: () {
-            showDialog(
-              context: context,
-              builder: (_) => ChangeNameAlertDialog(nome, _setName),
-            );
-          },
-          child: Text(
-            nome,
-            style: const TextStyle(
-              fontSize: 22,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-        )
+        TextButtonSetName(
+          nomeInicial: nome,
+          setName: _setName,
+        ),
       ],
     );
   }
