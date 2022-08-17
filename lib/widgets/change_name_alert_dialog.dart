@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'alert_dialog_empty_text.dart';
+
 class ChangeNameAlertDialog extends StatelessWidget {
   final String nomeInicial;
   final void Function(String) setName;
@@ -32,35 +34,13 @@ class ChangeNameAlertDialog extends StatelessWidget {
         TextButton(
           onPressed: () {
             if (newNome.isEmpty) {
-              showDialog(
-                context: context,
-                builder: (_) => const _AlertDialogEmptyText(),
-              );
+              AlertDialogEmptyText.show("Nome não pode ser vázio", context);
             } else {
               setName(newNome);
               Navigator.pop(context);
             }
           },
           child: const Text("Sim"),
-        ),
-      ],
-    );
-  }
-}
-
-class _AlertDialogEmptyText extends StatelessWidget {
-  const _AlertDialogEmptyText({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return AlertDialog(
-      title: const Text("Nome não pode ser vázio"),
-      actions: [
-        TextButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          child: const Text("OK"),
         ),
       ],
     );
