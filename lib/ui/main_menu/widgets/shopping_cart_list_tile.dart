@@ -33,7 +33,7 @@ class _ShoppingCartListTileState extends State<ShoppingCartListTile> {
         newScreen: CartInspection(widget.cart, _setCartName),
         title: widget.cart.name,
         subtitle: widget.cart.getFormatedDate(),
-        trailing: "Total R\$ ${widget.cart.getTotalCart()}",
+        trailing: "R\$ ${widget.cart.getTotalCart()}",
         icone: icone,
       ),
     );

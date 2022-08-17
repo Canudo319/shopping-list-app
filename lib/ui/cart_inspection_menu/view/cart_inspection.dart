@@ -4,6 +4,8 @@ import 'package:shopping_list_app/models/shopping_item_model.dart';
 import 'package:shopping_list_app/ui/cart_inspection_menu/widgets/shopping_item_list_tile.dart';
 import 'package:shopping_list_app/widgets/text_button_setname.dart';
 
+import '../../../widgets/add_button.dart';
+
 class CartInspection extends StatefulWidget {
   final ShoppingCartModel cart;
   final void Function(String) setName;
@@ -51,18 +53,22 @@ class _CartInspectionState extends State<CartInspection> {
           ],
         ),
       ),
-      body: Column(
-        children: [
-          Expanded(
-            child: Card(
-              elevation: 0,
-              child: ListView(
-                padding: const EdgeInsets.all(10),
-                children: [..._extract(widget.cart.itens)],
+      body: Container(
+        padding: const EdgeInsets.all(10),
+        child: Column(
+          children: [
+            Expanded(
+              child: Card(
+                color: Colors.transparent,
+                elevation: 0,
+                child: ListView(
+                  children: [..._extract(widget.cart.itens)],
+                ),
               ),
             ),
-          ),
-        ],
+            AddButton(() {}),
+          ],
+        ),
       ),
     );
   }

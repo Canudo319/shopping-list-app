@@ -27,7 +27,10 @@ class GenericListTile extends StatelessWidget {
           ),
         );
       },
-      leading: icone,
+      leading: SizedBox(
+        height: double.infinity,
+        child: icone,
+      ),
       title: _CustomText(
         text: title,
         fontSize: 28,
@@ -65,6 +68,7 @@ class _CustomText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       text,
+      softWrap: false,
       style: TextStyle(
         fontSize: fontSize,
         color: Colors.white,

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shopping_list_app/models/shopping_cart_model.dart';
 import 'package:shopping_list_app/ui/change_primary_color_menu/view/change_primary_color.dart';
+import 'package:shopping_list_app/widgets/add_button.dart';
 
 import '../../../models/shopping_item_model.dart';
 import '../widgets/greeter_widget.dart';
@@ -95,16 +96,14 @@ class ShoppingCartsMenu extends StatelessWidget {
           children: [
             Expanded(
               child: Card(
+                color: Colors.transparent,
                 elevation: 0,
                 child: ListView(
                   children: [..._extract(shoppingCarts)],
                 ),
               ),
             ),
-            ElevatedButton(
-              onPressed: () {},
-              child: const Text("data"),
-            )
+            AddButton(() {})
           ],
         ),
       ),
