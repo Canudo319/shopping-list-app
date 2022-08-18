@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shopping_list_app/models/shopping_cart_model.dart';
 import 'package:shopping_list_app/models/shopping_item_model.dart';
+import 'package:shopping_list_app/ui/add_item_menu/view/add_item_menu.dart';
 import 'package:shopping_list_app/ui/cart_inspection_menu/widgets/shopping_item_list_tile.dart';
 import 'package:shopping_list_app/widgets/text_button_setname.dart';
 
@@ -35,6 +36,12 @@ class _CartInspectionState extends State<CartInspection> {
       });
     }
 
+    void _addItem(ShoppingItemModel item) {
+      setState(() {
+        widget.cart.itens.add(item);
+      });
+    }
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).primaryColor,
@@ -66,7 +73,14 @@ class _CartInspectionState extends State<CartInspection> {
                 ),
               ),
             ),
-            AddButton(() {}),
+            AddButton(() {
+              Navigator.push(
+                context,
+                MaterialPageRoute<void>(
+                    builder: (BuildContext context) =>
+                        AddItemMenu(widget.cart, _addItem)),
+              );
+            }),
           ],
         ),
       ),

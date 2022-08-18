@@ -18,7 +18,7 @@ class ShoppingCartsMenu extends StatefulWidget {
 }
 
 class _ShoppingCartsMenuState extends State<ShoppingCartsMenu> {
-  var shoppingCarts = [
+  List<ShoppingCartModel> shoppingCarts = [
     ShoppingCartModel(
       id: 1,
       date: DateTime(2022, 08, 14),
