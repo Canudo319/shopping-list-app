@@ -35,12 +35,10 @@ class GenericListTile extends StatelessWidget {
         text: title,
         fontSize: 28,
       ),
-      subtitle: subtitle == null
-          ? null
-          : _CustomText(
-              text: subtitle ?? "",
-              fontSize: 12,
-            ),
+      subtitle: _CustomText(
+        text: subtitle ?? "",
+        fontSize: 12,
+      ),
       trailing: trailing == null
           ? null
           : _CustomText(

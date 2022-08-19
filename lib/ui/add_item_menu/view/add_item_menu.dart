@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:shopping_list_app/models/shopping_cart_model.dart';
 import 'package:shopping_list_app/models/shopping_item_model.dart';
 
@@ -51,6 +52,41 @@ class AddItemMenu extends StatelessWidget {
               onChanged: (String s) {
                 item.name = s;
               },
+            ),
+            const InfoText("Marca do item"),
+            TextFormField(
+              initialValue: item.brand ?? "",
+              style: const TextStyle(
+                fontSize: 20,
+              ),
+              onChanged: (String s) {
+                item.brand = s;
+              },
+            ),
+            const InfoText("Tipo de item"),
+            TextFormField(
+              initialValue: item.type ?? "",
+              style: const TextStyle(
+                fontSize: 20,
+              ),
+              onChanged: (String s) {
+                item.type = s;
+              },
+            ),
+            const InfoText("Tipo de item"),
+            TextFormField(
+              initialValue: item.price.toString(),
+              style: const TextStyle(
+                fontSize: 20,
+              ),
+              onChanged: (String s) {
+                item.price = double.tryParse(s) ?? 0.0;
+              },
+              keyboardType:
+                  const TextInputType.numberWithOptions(decimal: true),
+              inputFormatters: <TextInputFormatter>[
+                FilteringTextInputFormatter.allow(RegExp(r'^(\d+)?\.?\d{0,2}'))
+              ],
             ),
           ],
         ),

@@ -10,8 +10,14 @@ import '../../../widgets/add_button.dart';
 class CartInspection extends StatefulWidget {
   final ShoppingCartModel cart;
   final void Function(String) setName;
+  final void Function() addItem;
 
-  const CartInspection(this.cart, this.setName, {Key? key}) : super(key: key);
+  const CartInspection(
+    this.cart,
+    this.setName,
+    this.addItem, {
+    Key? key,
+  }) : super(key: key);
 
   @override
   State<CartInspection> createState() => _CartInspectionState();
@@ -39,6 +45,7 @@ class _CartInspectionState extends State<CartInspection> {
     void _addItem(ShoppingItemModel item) {
       setState(() {
         widget.cart.itens.add(item);
+        widget.addItem();
       });
     }
 

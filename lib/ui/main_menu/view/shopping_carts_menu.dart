@@ -63,11 +63,15 @@ class _ShoppingCartsMenuState extends State<ShoppingCartsMenu> {
 
   @override
   Widget build(BuildContext context) {
+    void _addItem() {
+      setState(() {});
+    }
+
     List<ShoppingCartListTile> _extract(List<ShoppingCartModel> listaCarts) {
       List<ShoppingCartListTile> listTiles = [];
 
       for (var cart in listaCarts) {
-        listTiles.add(ShoppingCartListTile(cart));
+        listTiles.add(ShoppingCartListTile(cart, _addItem));
       }
 
       return listTiles;

@@ -5,8 +5,13 @@ import 'package:shopping_list_app/widgets/generic_list_tile.dart';
 
 class ShoppingCartListTile extends StatefulWidget {
   final ShoppingCartModel cart;
+  final void Function() addItem;
 
-  const ShoppingCartListTile(this.cart, {Key? key}) : super(key: key);
+  const ShoppingCartListTile(
+    this.cart,
+    this.addItem, {
+    Key? key,
+  }) : super(key: key);
 
   @override
   State<ShoppingCartListTile> createState() => _ShoppingCartListTileState();
@@ -30,7 +35,7 @@ class _ShoppingCartListTileState extends State<ShoppingCartListTile> {
     return Padding(
       padding: const EdgeInsets.fromLTRB(0, 4, 0, 4),
       child: GenericListTile(
-        newScreen: CartInspection(widget.cart, _setCartName),
+        newScreen: CartInspection(widget.cart, _setCartName, widget.addItem),
         title: widget.cart.name,
         subtitle: widget.cart.getFormatedDate(),
         trailing: "R\$ ${widget.cart.getTotalCart()}",
