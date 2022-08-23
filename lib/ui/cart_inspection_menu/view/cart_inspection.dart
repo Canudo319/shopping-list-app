@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:shopping_list_app/models/shopping_cart_model.dart';
 import 'package:shopping_list_app/models/shopping_item_model.dart';
-import 'package:shopping_list_app/ui/add_item_menu/view/add_item_menu.dart';
 import 'package:shopping_list_app/ui/cart_inspection_menu/widgets/shopping_item_list_tile.dart';
 import 'package:shopping_list_app/widgets/text_button_setname.dart';
 
 import '../../../widgets/add_button.dart';
+import '../../item_menu/view/item_menu.dart';
 
 class CartInspection extends StatefulWidget {
   final ShoppingCartModel cart;
   final void Function(String) setName;
-  final void Function() addItem;
+  final void Function() refesh;
 
   const CartInspection(
     this.cart,
     this.setName,
-    this.addItem, {
+    this.refesh, {
     Key? key,
   }) : super(key: key);
 
@@ -30,7 +30,7 @@ class _CartInspectionState extends State<CartInspection> {
       List<ShoppingItemListTile> listTiles = [];
 
       for (var item in listaItens) {
-        listTiles.add(ShoppingItemListTile(item));
+        listTiles.add(ShoppingItemListTile(item, () => setState(() {})));
       }
 
       return listTiles;
@@ -45,7 +45,7 @@ class _CartInspectionState extends State<CartInspection> {
     void _addItem(ShoppingItemModel item) {
       setState(() {
         widget.cart.itens.add(item);
-        widget.addItem();
+        widget.refesh();
       });
     }
 
@@ -84,8 +84,7 @@ class _CartInspectionState extends State<CartInspection> {
               Navigator.push(
                 context,
                 MaterialPageRoute<void>(
-                    builder: (BuildContext context) =>
-                        AddItemMenu(widget.cart, _addItem)),
+                    builder: (BuildContext context) => ItemMenu(_addItem)),
               );
             }),
           ],

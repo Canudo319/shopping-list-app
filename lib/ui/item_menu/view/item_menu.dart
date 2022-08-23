@@ -1,23 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:shopping_list_app/models/shopping_cart_model.dart';
 import 'package:shopping_list_app/models/shopping_item_model.dart';
 
 import '../../../widgets/info_text.dart';
 
-class AddItemMenu extends StatelessWidget {
-  final ShoppingCartModel cart;
-  final void Function(ShoppingItemModel) addItem;
+class ItemMenu extends StatelessWidget {
+  final void Function(ShoppingItemModel) func;
+  final ShoppingItemModel? itemInicial;
 
-  const AddItemMenu(this.cart, this.addItem, {Key? key}) : super(key: key);
+  const ItemMenu(this.func, {this.itemInicial, Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    var item = ShoppingItemModel(
-      id: cart.itens.length + 1,
-      name: "Item",
-      price: 0.00,
-    );
+    var item = itemInicial ??
+        ShoppingItemModel(
+          id: 0,
+          name: "Item",
+          price: 0.00,
+        );
 
     return Scaffold(
       appBar: AppBar(
@@ -26,7 +26,7 @@ class AddItemMenu extends StatelessWidget {
         actions: [
           RawMaterialButton(
             onPressed: () {
-              addItem(item);
+              func(item);
               Navigator.pop(context);
             },
             shape: const CircleBorder(),
@@ -53,6 +53,7 @@ class AddItemMenu extends StatelessWidget {
                 item.name = s;
               },
             ),
+            const SizedBox(height: 10),
             const InfoText("Marca do item"),
             TextFormField(
               initialValue: item.brand ?? "",
@@ -63,6 +64,7 @@ class AddItemMenu extends StatelessWidget {
                 item.brand = s;
               },
             ),
+            const SizedBox(height: 10),
             const InfoText("Tipo de item"),
             TextFormField(
               initialValue: item.type ?? "",
@@ -73,7 +75,8 @@ class AddItemMenu extends StatelessWidget {
                 item.type = s;
               },
             ),
-            const InfoText("Tipo de item"),
+            const SizedBox(height: 10),
+            const InfoText("Preço do item"),
             TextFormField(
               initialValue: item.price.toString(),
               style: const TextStyle(
