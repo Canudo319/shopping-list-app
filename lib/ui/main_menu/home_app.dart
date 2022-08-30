@@ -25,6 +25,7 @@ class _HomeAppState extends State<HomeApp> {
       title: "Shopping App",
       theme: themeApp,
       home: ShoppingCartsMenu(_setThemeData),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
